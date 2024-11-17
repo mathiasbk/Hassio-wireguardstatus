@@ -43,7 +43,7 @@ def SendToMQTT(topic, message):
         latest_handshake = client_info.get("latest_handshake", "none")
         transfer = client_info.get("transfer", "none")
 
-        topic_suffix = f"/client_{i + 1}"  # Unik identifikator for hver klient
+        topic_suffix = f"/client_{i + 1}"
         client.publish(f"{mqtt_topic_prefix}{topic_suffix}/peer",   str(["peer"]))
 
         client.publish(f"{mqtt_topic_prefix}/latest_handshake", latest_handshake)
@@ -62,14 +62,14 @@ def GetWGStatus():
         client = {}
         for line in output.splitlines():
             if line.startswith("peer:"):
-                if client:  # Hvis det allerede er en klient, lagre den
+                if client: 
                     clients.append(client)
                 client = {"peer": line.split()[1]}
             elif line.startswith("latest handshake:"):
                 client["latest_handshake"] = line.split(": ", 1)[1]
             elif line.startswith("transfer:"):
                 client["transfer"] = line.split(": ", 1)[1]
-        if client:  # Legg til siste klient
+        if client: 
             clients.append(client)
         
         return {"clients": clients}
