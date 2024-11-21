@@ -37,8 +37,6 @@ def SendToMQTT(topic, message):
         print("Error getting Wireguard status. Make sure you run as admin and Wireguard is installed. Error: " + message["error"])
         client.disconnect()
         return
-    else:
-        print("Wireguard status retrieved successfully.")
     
     # Send server info
     connectedclients = len(server_info["clients"])
