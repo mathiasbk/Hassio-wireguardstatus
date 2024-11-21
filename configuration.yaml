@@ -1,0 +1,18 @@
+#Configuration file for Home assistant
+#add these lines to your configuration.yaml file
+
+#MQTT
+mqtt:
+    sensor:
+    - name: "WireGuard Status"
+      state_topic: "home/wireguard/status"
+
+    - name: "WireGuard connected clients"
+      state_topic: "home/wireguard/connectedclients"
+      
+    - name: "WireGuard Public key"
+      state_topic: "home/wireguard/public_key"
+      
+    - name: "WireGuard Listening port"
+      state_topic: "home/wireguard/listening_port"
+
